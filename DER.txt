@@ -1,0 +1,43 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table jugadores {
+  id integer [primary key]
+  nombre varchar
+  posicion varchar
+  edad integer
+  nacionalidad varchar
+  created_at timestamp
+}
+
+Table equipos {
+  id integer [primary key]
+  nombre varchar
+  liga varchar
+  pais varchar
+  fundado integer
+}
+
+Table jugador_equipo {
+  jugador_id integer [not null]
+  equipo_id integer [not null]
+  fecha_ingreso date
+  fecha_salida date
+
+  Note: 'Relación muchos-a-muchos entre jugadores y equipos'
+}
+
+Table estadisticas {
+  id integer [primary key]
+  jugador_id integer [not null]
+  partidos_jugados integer
+  goles integer
+  asistencias integer
+  temporada varchar
+}
+
+Ref jugador_estadisticas: estadisticas.jugador_id > jugadores.id
+
+Ref jugador_equipo_jugador: jugador_equipo.jugador_id > jugadores.id
+
+Ref jugador_equipo_equipo: jugador_equipo.equipo_id > equipos.id

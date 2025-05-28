@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Jugador {
+  id            Int             @id @default(autoincrement())
+  nombre        String
+  posicion      Posicion
+  edad          Int             @db.SmallInt
+  nacionalidad  String
+  createdAt     DateTime        @default(now())
+
+  estadisticas  Estadistica[]
+  equipos       JugadorEquipo[]
+}
+
+model Equipo {
+  id        Int             @id @default(autoincrement())
+  nombre    String          @unique
+  liga      String
+  pais      String
+  fundado   Int             @db.SmallInt
+
+  jugadores JugadorEquipo[]
+}
+
+model JugadorEquipo {
+  jugadorId     Int
+  equipoId      Int
+  fechaIngreso  DateTime
+  fechaSalida   DateTime?
+
+  jugador       Jugador    @relation(fields: [jugadorId], references: [id])
+  equipo        Equipo     @relation(fields: [equipoId], references: [id])
+
+  @@id([jugadorId, equipoId])
+}
+
+model Estadistica {
+  id              Int         @id @default(autoincrement())
+  jugadorId       Int
+  partidosJugados Int
+  goles           Int
+  asistencias     Int
+  temporada       Temporada
+
+  jugador         Jugador     @relation(fields: [jugadorId], references: [id])
+}
+
+enum Posicion {
+  Portero
+  Defensa
+  Mediocampista
+  Delantero
+}
+
+enum Temporada {
+  T2021_2022
+  T2022_2023
+  T2023_2024
+}
