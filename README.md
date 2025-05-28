@@ -29,8 +29,8 @@ TONO:
 
 | Punto                                                | ¿Cumplido?                                                          |
 | ---------------------------------------------------- | ------------------------------------------------------------------- |
-| CRUD con Prisma para tabla principal                 | Depende si ya hiciste el código                                     |
-| Crear/asociar registros relacionados en 1 formulario | Si implementaste lógica como el ejemplo, sí                         |
+| CRUD con Prisma para tabla principal                 | no hay                                                              |
+| Crear/asociar registros relacionados en 1 formulario | flata                                                               |
 | Validaciones en DB y aplicación                      | Parcial (tipos y restricciones básicas en DB, lógica app pendiente) |
 | Uso de 2 tipos personalizados                        | Sí (enums)                                                          |
 | Vista creada para índice                             | Sí                                                                  |
