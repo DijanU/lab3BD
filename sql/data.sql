@@ -16,8 +16,8 @@ INSERT INTO "Jugador" (id, nombre, posicion, edad, nacionalidad, "createdAt") VA
 (6, 'Joshua Kimmich', 'Mediocampista', 29, 'Alemania', NOW()),
 (7, 'Vinícius Jr', 'Delantero', 23, 'Brasil', NOW());
 
--- Jugador-Equipo (relaciones muchos a muchos)
-INSERT INTO "JugadorEquipo" (jugadorId, equipoId, "fechaIngreso") VALUES
+-- Jugador-Equipo
+INSERT INTO "JugadorEquipo" ("jugadorId", "equipoId", "fechaIngreso") VALUES
 (1, 1, '2004-07-01'),
 (1, 4, '2021-08-10'),
 (2, 3, '2022-07-01'),
@@ -28,7 +28,7 @@ INSERT INTO "JugadorEquipo" (jugadorId, equipoId, "fechaIngreso") VALUES
 (7, 2, '2018-07-01');
 
 -- Estadísticas
-INSERT INTO "Estadistica" (id, jugadorId, partidosJugados, goles, asistencias, temporada) VALUES
+INSERT INTO "Estadistica" (id, "jugadorId", "partidosJugados", goles, asistencias, temporada) VALUES
 (1, 1, 30, 20, 15, 'T2022_2023'),
 (2, 1, 28, 25, 12, 'T2023_2024'),
 (3, 2, 34, 36, 5, 'T2022_2023'),
