@@ -1,6 +1,6 @@
 // server.ts
 import { serve } from "bun";
-import { crearJugador, obtenerJugadores, eliminarJugador, actualizarJugador } from "./crud"; // asumiendo que pusiste ese archivo en crud.ts
+import { crearJugador, obtenerJugadores, eliminarJugador, actualizarJugador } from "./crudJugador"; // asumiendo que pusiste ese archivo en crud.ts
 import { Posicion } from "@prisma/client";
 
 serve({
